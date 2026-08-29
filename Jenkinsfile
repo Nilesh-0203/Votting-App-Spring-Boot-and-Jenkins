@@ -70,7 +70,7 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline completed successfully — app deployed.'
+            echo 'Pipeline completed successfully — app deployed..'
         }
         failure {
             echo 'Pipeline failed — check console output.'
