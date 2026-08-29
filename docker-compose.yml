@@ -8,6 +8,11 @@ services:
       MYSQL_DATABASE: poll_db
     volumes:
       - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
 
   backend:
     image: nilesh0203/poll-backend:latest
@@ -19,7 +24,8 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
 
   frontend:
     image: nilesh0203/poll-frontend:latest
