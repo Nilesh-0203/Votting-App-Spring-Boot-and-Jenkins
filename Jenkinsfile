@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+    tools {
+        maven 'Maven3'   // must match the name you gave it in step 1
+        jdk 'jdk17'       // only if you also configure a JDK tool; otherwise remove this line
+    }
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')
         BACKEND_IMAGE  = "nilesh0203/poll-backend"
