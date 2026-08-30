@@ -21,10 +21,21 @@ pipeline {
         stage('Backend Test') {
             steps {
                 sh '''
-                    cd backend
-                    chmod +x mvnw
-                    ./mvnw clean test
-                '''
+            cd backend
+            chmod +x mvnw
+
+            echo "===== JAVA ====="
+            java -version
+
+            echo "===== JAVA_HOME ====="
+            echo $JAVA_HOME
+
+            echo "===== MAVEN ====="
+            ./mvnw -version
+
+            echo "===== BUILD ====="
+            ./mvnw clean test
+        '''
             }
         }
 
