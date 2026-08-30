@@ -9,18 +9,11 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Check Java') {
             steps {
                 sh '''
                     java -version
                     echo "JAVA_HOME=$JAVA_HOME"
-                    ./backend/mvnw -version
                 '''
             }
         }
