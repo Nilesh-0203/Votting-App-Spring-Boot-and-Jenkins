@@ -12,9 +12,24 @@ pipeline {
         stage('Check Java') {
             steps {
                 sh '''
-                    java -version
-                    echo "JAVA_HOME=$JAVA_HOME"
-                '''
+            echo "===== JAVA ====="
+            which java
+            java -version
+
+            echo "===== JAVAC ====="
+            which javac
+            javac -version
+
+            echo "===== JAVA_HOME ====="
+            echo $JAVA_HOME
+
+            echo "===== MAVEN ====="
+            cd backend
+            ./mvnw -version
+
+            echo "===== JAVAC FROM JAVA_HOME ====="
+            $JAVA_HOME/bin/javac -version
+        '''
             }
         }
 
