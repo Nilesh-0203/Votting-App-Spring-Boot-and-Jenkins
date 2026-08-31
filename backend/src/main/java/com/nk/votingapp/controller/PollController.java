@@ -10,7 +10,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/polls")
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = {
+        "http://localhost:4200",
+        "http://13.204.86.202"
+})
 public class PollController {
 
     private final PollService pollService;

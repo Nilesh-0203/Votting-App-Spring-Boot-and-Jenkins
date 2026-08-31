@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PollService {
-  private baseUrl = 'http://localhost:8080/api/polls'
+
+  private baseUrl = '/api/polls';
 
   constructor(private http: HttpClient) { }
 
-  createPoll(poll: Poll): Observable<Poll>{
-    const url = `${this.baseUrl}`;
-    return this.http.post<Poll>(url,poll);
+  createPoll(poll: Poll): Observable<Poll> {
+    return this.http.post<Poll>(this.baseUrl, poll);
   }
 
   getPolls(): Observable<Poll[]> {
